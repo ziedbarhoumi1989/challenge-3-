@@ -12,9 +12,26 @@
 //lets make an employee profile using closures
 
 function employee(name, salary) {
+	var friends=[];
     return {
         name: name,
-        salary: salary
+        salary: salary,
+        sayMyName: function() {
+        	return  name;
+        },
+        sayHello: function() {
+        	return "hello "+name;
+        },
+        increaseSalary: function(n) {
+        	return "your salary is "+(salary+n)+"$";
+        }
+        addFriend: function(object) {
+        	friends.push(object.name);
+        	return "you became friend with " + friends.join(" and ");
+        }
+        listFriends:function() {
+        	return "you have " + friends.length + " friends"
+        }
     }
 }
 
@@ -69,10 +86,41 @@ var employeeC = employee("Sara", 150);
 
 
 // Write your code here .....
+function Pet(petName) {
+	 
+	var pet={};
+
+	pet.name=petName;
+	pet.addInfo=addInfo;
+	pet.increaseAge=increaseAge;
+	pet.availability = false;
+	pet.changeState=changeState;
+	pet.checkstate=checkstate;
+	return pet;
+}
+	
+var addInfo = function(age, owner, gender, species) {
+	this.age=age;
+	this.owner=owner;
+	this.gender=gender;
+	this.species=species;
+}
+var increaseAge = function(n) {
+	this.age this.age + n;
+}
+var checkstate= function() {
+	if(this.availability) {
+		return true;
+	}
+	return false;
+}
+var changeState = function() {
+	this.availability=! this.availability;
+}
 
 
 // Now, to make sure that you are actually reading, make a comment below this and type: Yes I am
-
+//Yes I am
 //=============================================================================
 /*                                  Q3                                       */
 //=============================================================================
@@ -102,6 +150,15 @@ function reduce(array, f, acc) {
 // Use the updated version of reduce to write a function max that returns the maximum number in an array of numbers. 
 
 // Write your code here .....
+function max(array) {
+	
+	return reduce(array,function(a , b ){
+		if(a>=b){
+			return a;
+		}
+		else return b;
+	},0 )
+}
 
 
 
